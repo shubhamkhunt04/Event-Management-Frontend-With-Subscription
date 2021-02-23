@@ -1,11 +1,19 @@
 import { gql } from "@apollo/client";
 
 export const CREATE_EVENT_SUBSCRIPTION = gql`
-  subscription {
-    newEvent {
-      eventName
-      description
-      time
+  subscription($id: ID) {
+    event(id: $id) {
+      data {
+        id
+        userId
+        eventName
+        description
+        guests {
+          id
+          invitedUserEmail
+        }
+      }
+      mutation
     }
   }
 `;

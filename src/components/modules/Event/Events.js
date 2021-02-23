@@ -18,7 +18,7 @@ const Events = () => {
     document: CREATE_EVENT_SUBSCRIPTION,
     updateQuery: (prev, { subscriptionData }) => {
       if (!subscriptionData.data) return prev;
-      const newEvent = subscriptionData.data.newEvent;
+      const newEvent = subscriptionData.data.event;
       return Object.assign({}, prev, {
         getAllEvents: [...prev.getAllEvents, newEvent],
       });
