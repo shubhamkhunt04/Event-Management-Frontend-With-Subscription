@@ -3,13 +3,13 @@ import { Form, Input, Button, message } from "antd";
 import { useMutation } from "@apollo/client";
 import { SIGNUP_MUTATION } from "./graphql/Mutations";
 import CustomeLayout from "../../CustomeLayout/CustomeLayout";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 import { AuthContext } from "../../context/auth";
 
 const SignUp = () => {
   const [form] = Form.useForm();
-  const history = useHistory();
+  // const history = useHistory();
 
   const context = useContext(AuthContext);
 
