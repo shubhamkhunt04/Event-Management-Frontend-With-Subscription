@@ -1,6 +1,7 @@
 export const commonRoutes = {
   Home: "/",
-  Event: "/events/create",
+  Events: "/events",
+  CreateEvent: "/events/create",
   Login: "/user/login",
   SignUp: "/user/signup",
 };

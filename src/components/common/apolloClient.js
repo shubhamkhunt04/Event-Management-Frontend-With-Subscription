@@ -11,11 +11,9 @@ import { WebSocketLink } from "@apollo/client/link/ws";
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
 });
-
 const authLink = new ApolloLink((operation, forward) => {
   // Retrieve the authorization token from local storage.
   const token = localStorage.getItem("auth_token");
-
   // Use the setContext method to set the HTTP headers.
   operation.setContext({
     headers: {
@@ -46,7 +44,7 @@ const splitLink = split(
     );
   },
   wsLink,
-  httpLink.concat(authLink)
+  authLink.concat(httpLink)
 );
 
 export const client = new ApolloClient({

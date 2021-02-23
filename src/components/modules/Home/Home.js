@@ -20,7 +20,7 @@ const Home = () => {
           <>
             <div style={{ marginTop: "30px" }}>
               <Row gutter={[0, 24]} justify="center">
-                {data.getAllEvents.slice().map((event) => {
+                {data.getAllEvents.slice(1, 5).map((event) => {
                   return (
                     <Col style={{ padding: "16px" }} key={event.id}>
                       <EventCard

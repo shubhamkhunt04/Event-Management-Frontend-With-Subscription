@@ -29,11 +29,11 @@ const NavBar = ({ current }) => {
         style={{ lineHeight: "50px" }}
       >
         <Menu.Item key="home">
-          <Link to="/">Home </Link>
+          <Link to={commonRoutes.Home}>Home </Link>
         </Menu.Item>
         {user && (
           <Menu.Item key="event">
-            <Link to="/events/create">Event </Link>
+            <Link to={commonRoutes.Events}>Event </Link>
           </Menu.Item>
         )}
         {/* <Menu.Item key="login">

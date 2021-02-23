@@ -1,7 +1,8 @@
 // import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NotFoundPage from "../components/common/NotFoundPage";
-import Event from "../components/modules/Event/CreateEvent";
+import Events from "../components/modules/Event/Events";
+import CreateEvent from "../components/modules/Event/CreateEvent";
 import Home from "../components/modules/Home/Home";
 import { commonRoutes } from "../components/common/constants";
 import Login from "../components/modules/Auth/Login";
@@ -17,7 +18,12 @@ const Routes = () => {
         <BrowserRouter>
           <Switch>
             <ProtectRoute exact path={commonRoutes.Home} component={Home} />
-            <ProtectRoute exact path={commonRoutes.Event} component={Event} />
+            <ProtectRoute exact path={commonRoutes.Events} component={Events} />
+            <ProtectRoute
+              exact
+              path={commonRoutes.CreateEvent}
+              component={CreateEvent}
+            />
             <AuthRoute exact path={commonRoutes.SignUp} component={SignUp} />
             <AuthRoute exact path={commonRoutes.Login} component={Login} />
             <Route path="*" component={NotFoundPage} />

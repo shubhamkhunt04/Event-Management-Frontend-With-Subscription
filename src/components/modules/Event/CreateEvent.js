@@ -1,30 +1,32 @@
 import React, { useContext } from "react";
 import { Form, message } from "antd";
-import { useMutation } from "@apollo/client";
+import { useMutation, useSubscription } from "@apollo/client";
 import { CREATE_EVENT_MUTATION } from "./graphql/Mutations";
+import { CREATE_EVENT_SUBSCRIPTION } from "./graphql/Subscriptions";
 import CustomeLayout from "../../CustomeLayout/CustomeLayout";
 import { useHistory } from "react-router-dom";
 import EventForm from "../../EventForm/EventForm";
 import { AuthContext } from "../../context/auth";
 import NotFoundPage from "../../common/NotFoundPage";
+import { commonRoutes } from "../../common/constants";
 
 const CreateEvent = () => {
   const [form] = Form.useForm();
   const history = useHistory();
 
-  const { user } = useContext(AuthContext);
-
   const [createEvent, { loading }] = useMutation(CREATE_EVENT_MUTATION, {
     onCompleted(data) {
-      console.log(data);
       form.resetFields();
       message.success("Event Successfully Created");
-      history.push("/");
+      history.push(commonRoutes.Events);
     },
     onError(err) {
       message.error(err.message);
     },
   });
+
+  // const { data } = useSubscription(CREATE_EVENT_SUBSCRIPTION);
+  // console.log("subscription result", data);
 
   const onFinish = (values) => {
     console.log(values);

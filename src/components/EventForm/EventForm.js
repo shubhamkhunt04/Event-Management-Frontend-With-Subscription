@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, Select } from "antd";
+import { Form, Input, Button, DatePicker } from "antd";
 
 const EventForm = ({ onFinish, onFinishFailed, form, loading }) => {
   return (
@@ -46,7 +46,8 @@ const EventForm = ({ onFinish, onFinishFailed, form, loading }) => {
           },
         ]}
       >
-        <Input type="text" placeholder="Enter Hotel Name" />
+        {/* <Input type="text" placeholder="Enter Hotel Name" /> */}
+        <DatePicker style={{ width: "100%" }} />
       </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit" loading={loading}>
