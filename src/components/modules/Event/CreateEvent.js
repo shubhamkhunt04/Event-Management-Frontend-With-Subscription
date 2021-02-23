@@ -28,12 +28,13 @@ const CreateEvent = () => {
 
   const onFinish = (values) => {
     console.log(values);
+    const { eventName, description, time } = values;
 
     createEvent({
       variables: {
-        eventName: "shubham",
-        description: "This desc",
-        time: "2020-02-02",
+        eventName,
+        description,
+        time,
       },
     });
   };

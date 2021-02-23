@@ -10,7 +10,6 @@ const Home = () => {
   const { loading, error, data } = useQuery(GET_ALL_EVENTS, {
     fetchPolicy: "cache-and-network",
   });
-  console.log(data);
   return (
     <CustomeLayout current="home">
       <div>
@@ -21,7 +20,7 @@ const Home = () => {
           <>
             <div style={{ marginTop: "30px" }}>
               <Row gutter={[0, 24]} justify="center">
-                {data.getAllEvents.slice(0, 10).map((event) => {
+                {data.getAllEvents.slice().map((event) => {
                   return (
                     <Col style={{ padding: "16px" }} key={event.id}>
                       <EventCard
