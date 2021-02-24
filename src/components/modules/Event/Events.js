@@ -5,7 +5,7 @@ import { Row, Col } from "antd";
 import { PlusSquareTwoTone } from "@ant-design/icons";
 import { GET_ALL_EVENTS } from "./graphql/Queries";
 import CustomeLayout from "../../CustomeLayout/CustomeLayout";
-import EventCard from "../../EventCard/EventCard";
+import EventCard from "../../common/components/EventCard/EventCard";
 import { commonRoutes } from "../../common/constants";
 import { CREATE_EVENT_SUBSCRIPTION } from "./graphql/Subscriptions";
 

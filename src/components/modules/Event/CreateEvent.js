@@ -6,7 +6,7 @@ import { CREATE_EVENT_MUTATION } from "./graphql/Mutations";
 import { CREATE_EVENT_SUBSCRIPTION } from "./graphql/Subscriptions";
 import CustomeLayout from "../../CustomeLayout/CustomeLayout";
 import { useHistory } from "react-router-dom";
-import EventForm from "../../EventForm/EventForm";
+import EventForm from "../../common/components/EventForm/EventForm";
 import { commonRoutes } from "../../common/constants";
 
 const CreateEvent = () => {

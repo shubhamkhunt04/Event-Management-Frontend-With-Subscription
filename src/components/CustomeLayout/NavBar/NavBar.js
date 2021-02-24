@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { Menu, Dropdown } from "antd";
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/auth";
-import { commonRoutes } from "../common/constants";
+import { AuthContext } from "../../context/auth";
+import { commonRoutes } from "../../common/constants";
 
 const AuthMenu = () => {
   return (

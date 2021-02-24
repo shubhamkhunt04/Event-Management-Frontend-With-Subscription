@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Breadcrumb } from "antd";
-import NavBar from "../NavBar/NavBar";
+import NavBar from "./NavBar/NavBar";
 import { useHistory } from "react-router-dom";
 
 const { Header, Content } = Layout;

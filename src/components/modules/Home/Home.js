@@ -2,9 +2,9 @@ import React from "react";
 import CustomeLayout from "../../CustomeLayout/CustomeLayout";
 import { useQuery } from "@apollo/client";
 import { Row, Col } from "antd";
-import Loader from "../../Loader/Loader";
+import Loader from "../../common/components/Loader/Loader";
 import { GET_ALL_EVENTS } from "./graphql/Queries";
-import EventCard from "../../EventCard/EventCard";
+import EventCard from "../../common/components/EventCard/EventCard";
 
 const Home = () => {
   const { loading, error, data } = useQuery(GET_ALL_EVENTS, {
