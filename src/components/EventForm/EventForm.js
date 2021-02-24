@@ -22,7 +22,7 @@ const EventForm = ({ onFinish, onFinishFailed, form, loading }) => {
           },
         ]}
       >
-        <Input type="text" placeholder="Enter Hotel Name" />
+        <Input type="text" placeholder="Enter Event Name" />
       </Form.Item>
       <Form.Item
         label="Event Desceription"
@@ -34,7 +34,7 @@ const EventForm = ({ onFinish, onFinishFailed, form, loading }) => {
           },
         ]}
       >
-        <Input type="text" placeholder="Enter Hotel Name" />
+        <Input type="text" placeholder="Enter Event Description" />
       </Form.Item>{" "}
       <Form.Item
         label="Event Time"

@@ -1,9 +1,9 @@
 import React from "react";
 import { Form, message } from "antd";
-// import { useMutation, useSubscription } from "@apollo/client";
-import { useMutation } from "@apollo/client";
+import { useMutation, useSubscription } from "@apollo/client";
+// import { useMutation } from "@apollo/client";
 import { CREATE_EVENT_MUTATION } from "./graphql/Mutations";
-// import { CREATE_EVENT_SUBSCRIPTION } from "./graphql/Subscriptions";
+import { CREATE_EVENT_SUBSCRIPTION } from "./graphql/Subscriptions";
 import CustomeLayout from "../../CustomeLayout/CustomeLayout";
 import { useHistory } from "react-router-dom";
 import EventForm from "../../EventForm/EventForm";
@@ -24,8 +24,8 @@ const CreateEvent = () => {
     },
   });
 
-  // const { data } = useSubscription(CREATE_EVENT_SUBSCRIPTION);
-  // console.log("subscription result", data);
+  const { data } = useSubscription(CREATE_EVENT_SUBSCRIPTION);
+  console.log("subscription result", data);
 
   const onFinish = (values) => {
     const { eventName, description, time } = values;
