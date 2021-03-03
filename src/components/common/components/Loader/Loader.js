@@ -1,18 +1,12 @@
-import React from "react";
-import { Space, Spin } from "antd";
+import React from 'react';
+import './Loader.css';
+import { Space, Spin } from 'antd';
 
 const Loader = () => {
   return (
-    <div
-      style={{
-        justifyContent: "center",
-        alignItems: "center",
-        height: "90vh",
-        display: "flex",
-      }}
-    >
+    <div id='loaderDiv'>
       <Space>
-        <Spin size="large" />
+        <Spin size='large' />
       </Space>
     </div>
   );

@@ -1,56 +1,56 @@
-import React from "react";
-import { Form, Input, Button, DatePicker } from "antd";
+import React from 'react';
+import './EventForm.css';
+import { Form, Input, Button, DatePicker } from 'antd';
 
 const EventForm = ({ onFinish, onFinishFailed, form, loading }) => {
   return (
     <Form
       form={form}
-      labelAlign="left"
+      labelAlign='left'
       labelCol={{ span: 3, offset: 2 }}
-      name="basic"
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
-      style={{ width: "70%", margin: "auto" }}
+      className='eventForm'
     >
       <Form.Item
-        label="Event Name"
-        name="eventName"
+        label='Event Name'
+        name='eventName'
         rules={[
           {
             required: true,
-            message: "Event Name Is Required !",
+            message: 'Event Name Is Required !',
           },
         ]}
       >
-        <Input type="text" placeholder="Enter Event Name" />
+        <Input type='text' placeholder='Enter Event Name' />
       </Form.Item>
       <Form.Item
-        label="Event Desceription"
-        name="description"
+        label='Event Desceription'
+        name='description'
         rules={[
           {
             required: true,
-            message: "Event Description Is Required !",
+            message: 'Event Description Is Required !',
           },
         ]}
       >
-        <Input type="text" placeholder="Enter Event Description" />
-      </Form.Item>{" "}
+        <Input type='text' placeholder='Enter Event Description' />
+      </Form.Item>{' '}
       <Form.Item
-        label="Event Time"
-        name="time"
+        label='Event Time'
+        name='time'
         rules={[
           {
             required: true,
-            message: "Event Time Is Required !",
+            message: 'Event Time Is Required !',
           },
         ]}
       >
         {/* <Input type="text" placeholder="Enter Hotel Name" /> */}
-        <DatePicker style={{ width: "100%" }} />
+        <DatePicker style={{ width: '100%' }} />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit" loading={loading}>
+        <Button type='primary' htmlType='submit' loading={loading}>
           Submit
         </Button>
       </Form.Item>

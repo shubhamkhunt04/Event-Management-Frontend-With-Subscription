@@ -1,0 +1,16 @@
+#eventRootDiv {
+  margin-top: 30px;
+}
+
+#eventCardRootCol {
+  padding: 16px;
+}
+
+.plusSquareTwoToneIcon {
+  font-size: 40px;
+  cursor: pointer;
+  position: fixed;
+  z-index: 1;
+  bottom: 30px;
+  right: 40px;
+}

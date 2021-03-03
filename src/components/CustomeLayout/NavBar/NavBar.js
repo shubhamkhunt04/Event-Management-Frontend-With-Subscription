@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
-import { Menu, Dropdown } from "antd";
-import { DownOutlined, UserOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/auth";
-import { commonRoutes } from "../../common/constants";
+import React, { useContext } from 'react';
+import './NavBar.css';
+import { Menu, Dropdown } from 'antd';
+import { DownOutlined, UserOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/auth';
+import { commonRoutes } from '../../common/constants';
 
 const AuthMenu = () => {
   return (
     <Menu>
-      <Menu.Item key="signup">
+      <Menu.Item key='signup'>
         <Link to={commonRoutes.SignUp}>SignUp</Link>
       </Menu.Item>
-      <Menu.Item key="login">
+      <Menu.Item key='login'>
         <Link to={commonRoutes.Login}>Login</Link>
       </Menu.Item>
     </Menu>
@@ -23,27 +24,24 @@ const NavBar = ({ current }) => {
   return (
     <div>
       <Menu
-        theme="dark"
-        mode="horizontal"
+        theme='dark'
+        mode='horizontal'
         selectedKeys={current}
-        style={{ lineHeight: "50px" }}
+        id='menuHeight'
       >
-        <Menu.Item key="home">
+        <Menu.Item key='home'>
           <Link to={commonRoutes.Home}>Home </Link>
         </Menu.Item>
         {user && (
-          <Menu.Item key="event">
+          <Menu.Item key='event'>
             <Link to={commonRoutes.Events}>Event </Link>
           </Menu.Item>
         )}
-        {/* <Menu.Item key="login">
-          <Link to="/login">Login </Link>
-        </Menu.Item> */}
         <Dropdown
           overlay={
             user ? (
               <Menu>
-                <Menu.Item key="logout">
+                <Menu.Item key='logout'>
                   <Link to={commonRoutes.Home} onClick={logout}>
                     Logout
                   </Link>
@@ -53,10 +51,10 @@ const NavBar = ({ current }) => {
               AuthMenu
             )
           }
-          trigger={["click"]}
+          trigger={['click']}
         >
-          <a onClick={(e) => e.preventDefault()}>
-            <UserOutlined style={{ marginLeft: "30px" }} /> <DownOutlined />
+          <a href='#0' onClick={(e) => e.preventDefault()}>
+            <UserOutlined className='userOutlined' /> <DownOutlined />
           </a>
         </Dropdown>
       </Menu>

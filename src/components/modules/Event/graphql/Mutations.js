@@ -12,3 +12,9 @@ export const CREATE_EVENT_MUTATION = gql`
     }
   }
 `;
+
+export const DELETE_EVENT_MUTATION = gql`
+  mutation($eventId: ID!) {
+    deleteEvent(eventId: $eventId)
+  }
+`;

@@ -1,28 +1,36 @@
-import React from "react";
-import { Card } from "antd";
-import { Link } from "react-router-dom";
+import React, { useContext } from 'react';
+import './EventCard.css';
+import { Card } from 'antd';
+import { DeleteFilled } from '@ant-design/icons';
+import { useMutation } from '@apollo/client';
+import { DELETE_EVENT_MUTATION } from '../../../modules/Event/graphql/Mutations';
+import { AuthContext } from '../../../context/auth';
 
-const EventCard = ({ eventid, name, description }) => {
+const EventCard = ({ eventId, userId, name, description }) => {
+  const [deleteEvent] = useMutation(DELETE_EVENT_MUTATION);
+
+  const { user } = useContext(AuthContext);
+
+  const deleteBtnHandler = () => {
+    deleteEvent({
+      variables: {
+        eventId,
+      },
+    });
+  };
+
   return (
-    <Link to={`/hotels/${eventid}`}>
-      <Card
-        hoverable
-        title={name}
-        style={{
-          cursor: "pointer",
-          width: "240px",
-          backgroundColor: "#C3FFA9",
-          height: "300px",
-        }}
-      >
-        <h4>EventID</h4>
-        <p>{eventid}</p>
-        <h4>EventName</h4>
-        <p>{name}</p>
-        <h4>Description</h4>
-        <p>{description}</p>
-      </Card>
-    </Link>
+    <Card hoverable title={name} className='eventCard'>
+      <h4>EventID</h4>
+      <p>{eventId}</p>
+      <h4>EventName</h4>
+      <p>{name}</p>
+      <h4>Description</h4>
+      <p>{description}</p>
+      {user && parseInt(user.id) === parseInt(userId) && (
+        <DeleteFilled onClick={deleteBtnHandler} />
+      )}
+    </Card>
   );
 };
 

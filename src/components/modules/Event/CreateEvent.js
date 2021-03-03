@@ -1,13 +1,13 @@
-import React from "react";
-import { Form, message } from "antd";
-import { useMutation, useSubscription } from "@apollo/client";
+import React from 'react';
+import { Form, message } from 'antd';
+import { useMutation } from '@apollo/client';
 // import { useMutation } from "@apollo/client";
-import { CREATE_EVENT_MUTATION } from "./graphql/Mutations";
-import { CREATE_EVENT_SUBSCRIPTION } from "./graphql/Subscriptions";
-import CustomeLayout from "../../CustomeLayout/CustomeLayout";
-import { useHistory } from "react-router-dom";
-import EventForm from "../../common/components/EventForm/EventForm";
-import { commonRoutes } from "../../common/constants";
+import { CREATE_EVENT_MUTATION } from './graphql/Mutations';
+// import { CREATE_EVENT_SUBSCRIPTION } from "./graphql/Subscriptions";
+import CustomeLayout from '../../CustomeLayout/CustomeLayout';
+import { useHistory } from 'react-router-dom';
+import EventForm from '../../common/components/EventForm/EventForm';
+import { commonRoutes } from '../../common/constants';
 
 const CreateEvent = () => {
   const [form] = Form.useForm();
@@ -16,7 +16,7 @@ const CreateEvent = () => {
   const [createEvent, { loading }] = useMutation(CREATE_EVENT_MUTATION, {
     onCompleted(data) {
       form.resetFields();
-      message.success("Event Successfully Created");
+      message.success('Event Successfully Created');
       history.push(commonRoutes.Events);
     },
     onError(err) {
@@ -24,8 +24,8 @@ const CreateEvent = () => {
     },
   });
 
-  const { data } = useSubscription(CREATE_EVENT_SUBSCRIPTION);
-  console.log("subscription result", data);
+  // const { data } = useSubscription(CREATE_EVENT_SUBSCRIPTION);
+  // console.log("subscription result", data);
 
   const onFinish = (values) => {
     const { eventName, description, time } = values;
@@ -40,13 +40,13 @@ const CreateEvent = () => {
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    throw new Error(errorInfo);
   };
 
   return (
     <>
-      <CustomeLayout current="hotels">
-        <div style={{ marginRight: "100px" }}>
+      <CustomeLayout current='hotels'>
+        <div id='createEventRootDiv'>
           <center>
             <h1>Create Event</h1>
             <EventForm

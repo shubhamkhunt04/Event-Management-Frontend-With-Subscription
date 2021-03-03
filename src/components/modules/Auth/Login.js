@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
-import { Form, Input, Button, message } from "antd";
-import { useMutation } from "@apollo/client";
-import { LOGIN_MUTATION } from "./graphql/Mutations";
-import CustomeLayout from "../../CustomeLayout/CustomeLayout";
-import { useHistory } from "react-router-dom";
-import { AuthContext } from "../../context/auth";
+import React, { useContext } from 'react';
+import './Login.css';
+import { Form, Input, Button, message } from 'antd';
+import { useMutation } from '@apollo/client';
+import { LOGIN_MUTATION } from './graphql/Mutations';
+import CustomeLayout from '../../CustomeLayout/CustomeLayout';
+import { useHistory } from 'react-router-dom';
+import { AuthContext } from '../../context/auth';
 
 const Login = () => {
   const [form] = Form.useForm();
@@ -15,13 +16,13 @@ const Login = () => {
     onCompleted(data) {
       const { login } = data;
       context.login(login);
-      localStorage.setItem("auth_token", login.token);
+      localStorage.setItem('auth_token', login.token);
       form.resetFields();
-      message.success("Login Successfully");
-      history.push("/");
+      message.success('Login Successfully');
+      history.push('/');
     },
     onError(err) {
-      message.error("Something Went Wrong !");
+      message.error('Something Went Wrong !');
     },
   });
 
@@ -36,41 +37,41 @@ const Login = () => {
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    throw new Error(errorInfo);
   };
 
   return (
-    <CustomeLayout current="login">
+    <CustomeLayout current='login'>
       <div>
-        <h1>Login page</h1>
+        <h1>Login </h1>
       </div>
 
       <Form
-        labelAlign="left"
+        id='loginFormStyle'
+        labelAlign='left'
         form={form}
         labelCol={{ span: 3, offset: 2 }}
-        name="basic"
+        name='basic'
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        style={{ width: "70%", margin: "auto" }}
       >
         <Form.Item
-          label="Email"
-          name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
+          label='Email'
+          name='email'
+          rules={[{ required: true, message: 'Please input your email!' }]}
         >
           <Input />
         </Form.Item>
 
         <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          label='Password'
+          name='password'
+          rules={[{ required: true, message: 'Please input your password!' }]}
         >
           <Input.Password />
         </Form.Item>
-        <Form.Item style={{ margin: "auto", maxWidth: "50px" }}>
-          <Button type="primary" htmlType="submit" loading={loading}>
+        <Form.Item style={{ margin: 'auto', maxWidth: '50px' }}>
+          <Button type='primary' htmlType='submit' loading={loading}>
             Submit
           </Button>
         </Form.Item>

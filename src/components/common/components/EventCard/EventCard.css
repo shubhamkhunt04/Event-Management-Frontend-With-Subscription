@@ -1,0 +1,6 @@
+.eventCard {
+  cursor: pointer;
+  width: 240px;
+  background-color: #c3ffa9 !important;
+  height: 300px;
+}

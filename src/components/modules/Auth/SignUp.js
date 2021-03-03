@@ -1,15 +1,14 @@
-import React, { useContext } from "react";
-import { Form, Input, Button, message } from "antd";
-import { useMutation } from "@apollo/client";
-import { SIGNUP_MUTATION } from "./graphql/Mutations";
-import CustomeLayout from "../../CustomeLayout/CustomeLayout";
-// import { useHistory } from "react-router-dom";
+import React, { useContext } from 'react';
+import './SignUp.css';
+import { Form, Input, Button, message } from 'antd';
+import { useMutation } from '@apollo/client';
+import { SIGNUP_MUTATION } from './graphql/Mutations';
+import CustomeLayout from '../../CustomeLayout/CustomeLayout';
 
-import { AuthContext } from "../../context/auth";
+import { AuthContext } from '../../context/auth';
 
 const SignUp = () => {
   const [form] = Form.useForm();
-  // const history = useHistory();
 
   const context = useContext(AuthContext);
 
@@ -17,10 +16,9 @@ const SignUp = () => {
     onCompleted(data) {
       const { register } = data;
       context.login(register);
-      localStorage.setItem("auth_token", register.token);
+      localStorage.setItem('auth_token', register.token);
       form.resetFields();
-      message.success("Register Successfully");
-      // history.push("/home");
+      message.success('Register Successfully');
     },
     onError(err) {
       message.error(err.message);
@@ -39,48 +37,48 @@ const SignUp = () => {
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    throw new Error(errorInfo);
   };
 
   return (
-    <CustomeLayout current="login">
+    <CustomeLayout current='login'>
       <div>
         <h1>SignUp</h1>
       </div>
 
       <Form
         form={form}
-        labelAlign="left"
+        labelAlign='left'
         labelCol={{ span: 3, offset: 2 }}
-        name="basic"
+        name='basic'
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        style={{ width: "70%", margin: "auto" }}
+        id='signUpFormStyle'
       >
         <Form.Item
-          label="username"
-          name="username"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          label='username'
+          name='username'
+          rules={[{ required: true, message: 'Please input your username!' }]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Email"
-          name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
+          label='Email'
+          name='email'
+          rules={[{ required: true, message: 'Please input your email!' }]}
         >
           <Input />
         </Form.Item>
 
         <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          label='Password'
+          name='password'
+          rules={[{ required: true, message: 'Please input your password!' }]}
         >
           <Input.Password />
         </Form.Item>
-        <Form.Item style={{ margin: "auto", maxWidth: "50px" }}>
-          <Button type="primary" htmlType="submit" loading={loading}>
+        <Form.Item style={{ margin: 'auto', maxWidth: '50px' }}>
+          <Button type='primary' htmlType='submit' loading={loading}>
             SignUp
           </Button>
         </Form.Item>
