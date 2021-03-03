@@ -5,9 +5,29 @@ import { DeleteFilled } from '@ant-design/icons';
 import { useMutation } from '@apollo/client';
 import { DELETE_EVENT_MUTATION } from '../../../modules/Event/graphql/Mutations';
 import { AuthContext } from '../../../context/auth';
+import { GET_ALL_EVENTS } from '../../../modules/Event/graphql/Queries';
 
 const EventCard = ({ eventId, userId, name, description }) => {
-  const [deleteEvent] = useMutation(DELETE_EVENT_MUTATION);
+  const [deleteEvent] = useMutation(DELETE_EVENT_MUTATION, {
+    // refetchQueries: [
+    //   {
+    //     query: GET_ALL_EVENTS,
+    //   },
+    // ],
+
+    update(proxy) {
+      const myCache = proxy.readQuery({ query: GET_ALL_EVENTS });
+      console.log(myCache);
+      if (myCache) {
+        proxy.writeQuery({
+          query: GET_ALL_EVENTS,
+          data: {
+            getAllEvents: myCache.getAllEvents.filter((s) => s.id !== eventId),
+          },
+        });
+      }
+    },
+  });
 
   const { user } = useContext(AuthContext);
 
@@ -18,7 +38,6 @@ const EventCard = ({ eventId, userId, name, description }) => {
       },
     });
   };
-
   return (
     <Card hoverable title={name} className='eventCard'>
       <h4>EventID</h4>

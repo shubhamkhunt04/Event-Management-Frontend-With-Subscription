@@ -5,19 +5,20 @@ import { DownOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/auth';
 import { commonRoutes } from '../../common/constants';
+import AuthMenu from './AuthMenu';
 
-const AuthMenu = () => {
-  return (
-    <Menu>
-      <Menu.Item key='signup'>
-        <Link to={commonRoutes.SignUp}>SignUp</Link>
-      </Menu.Item>
-      <Menu.Item key='login'>
-        <Link to={commonRoutes.Login}>Login</Link>
-      </Menu.Item>
-    </Menu>
-  );
-};
+// const AuthMenu = () => {
+//   return (
+//     <Menu>
+//       <Menu.Item key='signup'>
+//         <Link to={commonRoutes.SignUp}>SignUp</Link>
+//       </Menu.Item>
+//       <Menu.Item key='login'>
+//         <Link to={commonRoutes.Login}>Login</Link>
+//       </Menu.Item>
+//     </Menu>
+//   );
+// };
 
 const NavBar = ({ current }) => {
   const { user, logout } = useContext(AuthContext);
@@ -48,7 +49,7 @@ const NavBar = ({ current }) => {
                 </Menu.Item>
               </Menu>
             ) : (
-              AuthMenu
+              <AuthMenu />
             )
           }
           trigger={['click']}

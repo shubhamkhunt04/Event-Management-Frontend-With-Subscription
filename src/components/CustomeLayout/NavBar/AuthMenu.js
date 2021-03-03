@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu } from 'antd';
-import { commonRoutes } from '../../components/common/constants';
+import { commonRoutes } from '../../common/constants';
 
 const AuthMenu = () => {
   return (

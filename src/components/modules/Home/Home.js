@@ -3,7 +3,6 @@ import './Home.css';
 import CustomeLayout from '../../CustomeLayout/CustomeLayout';
 import { useQuery } from '@apollo/client';
 import { Row, Col } from 'antd';
-import Loader from '../../common/components/Loader/Loader';
 import { GET_ALL_EVENTS } from './graphql/Queries';
 import EventCard from '../../common/components/EventCard/EventCard';
 
@@ -16,7 +15,7 @@ const Home = () => {
       <div>
         {error && <h1>Error :</h1>}
         {loading ? (
-          <Loader />
+          <h1>Loading...</h1>
         ) : (
           <>
             <div id='homeRootDiv'>
