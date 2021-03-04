@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useQuery, useSubscription } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { Row, Col, message } from 'antd';
 import { PlusSquareTwoTone } from '@ant-design/icons';
 
@@ -13,24 +13,31 @@ import './Event.css';
 
 const Events = () => {
   const { subscribeToMore, loading, error, data = {} } = useQuery(
-    GET_ALL_EVENTS,
-    {
-      // fetchPolicy: 'network-only',
-    }
+    GET_ALL_EVENTS
   );
 
-  const eventSubscription = useSubscription(CREATE_EVENT_SUBSCRIPTION);
+  const subscribeCreateEvent = () => {
+    subscribeToMore({
+      document: CREATE_EVENT_SUBSCRIPTION,
+      updateQuery: (prev, { subscriptionData }) => {
+        if (!subscriptionData.data.newEvent) return prev;
+        if (subscriptionData.data.newEvent) {
+          message.success(
+            `${subscriptionData.data.newEvent.eventName} Event Created`
+          );
+        }
+        const newEvent = subscriptionData.data.newEvent;
+        return Object.assign({}, prev, {
+          getAllEvents: [...prev.getAllEvents, newEvent],
+        });
+      },
+    });
+  };
 
-  subscribeToMore({
-    document: CREATE_EVENT_SUBSCRIPTION,
-    updateQuery: (prev, { subscriptionData }) => {
-      if (!subscriptionData.data.newEvent) return prev;
-      const newEvent = subscriptionData.data.newEvent;
-      return Object.assign({}, prev, {
-        getAllEvents: [...prev.getAllEvents, newEvent],
-      });
-    },
-  });
+  useEffect(() => {
+    /* eslint-disable react-hooks/exhaustive-deps */
+    subscribeCreateEvent();
+  }, []);
 
   return (
     <CustomeLayout current='event'>
@@ -41,7 +48,6 @@ const Events = () => {
           <h1>Loading...</h1>
         ) : (
           <>
-            {eventSubscription.data && message.success('Event created')}
             <div id='eventRootDiv'>
               <Row gutter={[0, 24]} justify='center'>
                 {data?.getAllEvents?.map((event) => {
