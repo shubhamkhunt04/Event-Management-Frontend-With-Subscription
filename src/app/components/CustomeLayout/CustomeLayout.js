@@ -1,9 +1,10 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Layout, Breadcrumb } from 'antd';
 
 import NavBar from './NavBar/NavBar';
 import './CustomLayout.css';
+import { commonRoutes } from 'common/constants';
 
 const { Header, Content } = Layout;
 
@@ -24,20 +25,16 @@ const CustomeLayout = (props) => {
           <Content id='contentStyle'>
             <Breadcrumb>
               <Breadcrumb.Item>
-                <a href='/' rel='noopener noreferrer'>
+                <Link to={commonRoutes.Home} rel='noopener noreferrer'>
                   Home
-                </a>
+                </Link>
               </Breadcrumb.Item>
               {pathSnippets?.map((item, index) => {
                 return (
                   <Breadcrumb.Item key={index}>
-                    <a
-                      href={`/${item}`}
-                      rel='noopener noreferrer'
-                      id='breadcrumItemStyle'
-                    >
+                    <Link to={`${item}`}>
                       {`${item.replace(/\b\w/g, (c) => c.toUpperCase())}`}
-                    </a>
+                    </Link>
                   </Breadcrumb.Item>
                 );
               })}
