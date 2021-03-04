@@ -1,14 +1,15 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import NotFoundPage from '../components/common/NotFoundPage';
-import Events from '../components/modules/Event/Events';
-import CreateEvent from '../components/modules/Event/CreateEvent';
-import Home from '../components/modules/Home/Home';
-import { commonRoutes } from '../components/common/constants';
-import Login from '../components/modules/Auth/Login';
-import { AuthProvider } from '../components/context/auth';
-import SignUp from '../components/modules/Auth/SignUp';
-import AuthRoute from '../components/util/AuthRoute';
-import ProtectRoute from '../components/util/ProtectRoute';
+
+import { AuthProvider } from 'context/auth';
+import { commonRoutes } from 'common/constants';
+import NotFoundPage from '../NotFoundPage';
+import Events from 'modules/Event/Events';
+import CreateEvent from 'modules/Event/CreateEvent';
+import Home from 'modules/Home/Home';
+import Login from 'modules/Auth/Login';
+import SignUp from 'modules/Auth/SignUp';
+import ProtectRoute from './ProtectRoute';
+import AuthRoute from './AuthRoute';
 
 const Routes = () => {
   return (

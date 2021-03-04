@@ -1,0 +1,20 @@
+#contentStyle {
+  padding: 0 50px;
+  margin-top: 64px;
+}
+
+#siteLayoutStyle {
+  padding: 24;
+  min-height: 380;
+}
+
+#breadcrumItemStyle {
+  font-weight: 500;
+}
+
+#mainRootHeader {
+  height: 50px;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+}
