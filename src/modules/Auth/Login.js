@@ -23,7 +23,7 @@ const Login = () => {
       history.push('/');
     },
     onError(err) {
-      message.error('Something Went Wrong !');
+      message.error(err.message);
     },
   });
 
@@ -37,15 +37,11 @@ const Login = () => {
     });
   };
 
-  const onFinishFailed = (errorInfo) => {
-    throw new Error(errorInfo);
-  };
-
   return (
     <CustomeLayout current='login'>
-      <div>
+      <center>
         <h1>Login </h1>
-      </div>
+      </center>
 
       <Form
         id='loginFormStyle'
@@ -54,7 +50,6 @@ const Login = () => {
         labelCol={{ span: 3, offset: 2 }}
         name='basic'
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
       >
         <Form.Item
           label='Email'

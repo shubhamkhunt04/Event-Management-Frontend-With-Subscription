@@ -14,3 +14,7 @@
   bottom: 30px;
   right: 40px;
 }
+
+#bgHeightForEvent {
+  height: 100vh;
+}

@@ -41,7 +41,7 @@ const Events = () => {
 
   return (
     <CustomeLayout current='event'>
-      <div>
+      <div id='bgHeightForEvent'>
         {error && <h1>Error : Please Turn On Internet </h1>}
 
         {loading ? (

@@ -3,14 +3,13 @@ import { Form, Input, Button, DatePicker } from 'antd';
 
 import './EventForm.css';
 
-const EventForm = ({ onFinish, onFinishFailed, form, loading }) => {
+const EventForm = ({ onFinish, form, loading }) => {
   return (
     <Form
       form={form}
       labelAlign='left'
       labelCol={{ span: 3, offset: 2 }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
       className='eventForm'
     >
       <Form.Item

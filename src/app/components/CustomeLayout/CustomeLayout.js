@@ -36,7 +36,7 @@ const CustomeLayout = (props) => {
                       rel='noopener noreferrer'
                       id='breadcrumItemStyle'
                     >
-                      {`${item}`}
+                      {`${item.replace(/\b\w/g, (c) => c.toUpperCase())}`}
                     </a>
                   </Breadcrumb.Item>
                 );

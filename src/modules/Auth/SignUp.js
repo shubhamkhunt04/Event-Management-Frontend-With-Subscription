@@ -36,15 +36,11 @@ const SignUp = () => {
     });
   };
 
-  const onFinishFailed = (errorInfo) => {
-    throw new Error(errorInfo);
-  };
-
   return (
     <CustomeLayout current='login'>
-      <div>
+      <center>
         <h1>SignUp</h1>
-      </div>
+      </center>
 
       <Form
         form={form}
@@ -52,7 +48,6 @@ const SignUp = () => {
         labelCol={{ span: 3, offset: 2 }}
         name='basic'
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         id='signUpFormStyle'
       >
         <Form.Item

@@ -13,7 +13,7 @@ const Home = () => {
   });
   return (
     <CustomeLayout current='home'>
-      <div>
+      <div id='bgHeight'>
         {error && <h1>Error : Please Turn On Internet </h1>}
         {loading ? (
           <h1>Loading...</h1>

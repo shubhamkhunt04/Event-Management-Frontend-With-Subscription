@@ -9,7 +9,7 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: process.env.REACT_APP_BASE_HTTP_URL,
 });
 const authLink = new ApolloLink((operation, forward) => {
   // Retrieve the authorization token from local storage.
@@ -26,7 +26,7 @@ const authLink = new ApolloLink((operation, forward) => {
 });
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://localhost:3001/graphql',
+  uri: process.env.REACT_APP_WEBSOCKET_URL,
   options: {
     reconnect: true,
     connectionParams: {

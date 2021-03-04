@@ -5,3 +5,7 @@
 #eventCardCol {
   padding: 16px;
 }
+
+#bgHeight {
+  height: 100vh;
+}

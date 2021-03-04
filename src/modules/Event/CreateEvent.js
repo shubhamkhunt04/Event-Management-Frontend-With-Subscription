@@ -41,22 +41,13 @@ const CreateEvent = () => {
     });
   };
 
-  const onFinishFailed = (errorInfo) => {
-    throw new Error(errorInfo);
-  };
-
   return (
     <>
       <CustomeLayout current='hotels'>
         <div id='createEventRootDiv'>
           <center>
             <h1>Create Event</h1>
-            <EventForm
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
-              form={form}
-              loading={loading}
-            />
+            <EventForm onFinish={onFinish} form={form} loading={loading} />
           </center>
         </div>
       </CustomeLayout>
