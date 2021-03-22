@@ -11,9 +11,13 @@ const { Header, Content } = Layout;
 const CustomeLayout = (props) => {
   const { children, current } = props;
 
-  const history = useHistory();
+  const { location } = useHistory();
 
-  const pathSnippets = history.location.pathname.split('/').filter((i) => i);
+  // const pathSnippets = history.location.pathname.split('/').filter((i) => i);
+  let pathSnippets = location.pathname.split('/');
+
+  console.log(location.pathname);
+  console.log('pathsnoipet', pathSnippets);
 
   return (
     <>
@@ -24,12 +28,13 @@ const CustomeLayout = (props) => {
         <Layout>
           <Content id='contentStyle'>
             <Breadcrumb>
-              <Breadcrumb.Item>
+              {/* <Breadcrumb.Item>
                 <Link to={commonRoutes.Home} rel='noopener noreferrer'>
                   Home
                 </Link>
-              </Breadcrumb.Item>
+              </Breadcrumb.Item> */}
               {pathSnippets?.map((item, index) => {
+                console.log(item);
                 return (
                   <Breadcrumb.Item key={index}>
                     <Link to={`${item}`}>

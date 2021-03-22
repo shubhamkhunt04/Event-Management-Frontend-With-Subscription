@@ -36,12 +36,12 @@ const NavBar = ({ current }) => {
         }
         trigger={['click']}
       >
-        <Link onClick={(e) => e.preventDefault()}>
+        {/* <Link onClick={(e) => e.preventDefault()}>
           <UserOutlined className='userOutlined' /> <DownOutlined />
-        </Link>
-        {/* <a href='#0' onClick={(e) => e.preventDefault()}>
+        </Link> */}
+        <a href='#0' onClick={(e) => e.preventDefault()}>
           <UserOutlined className='userOutlined' /> <DownOutlined />
-        </a> */}
+        </a>
       </Dropdown>
     </Menu>
   );

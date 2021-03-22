@@ -8,7 +8,7 @@ import { GET_ALL_EVENTS } from 'modules/Event/graphql/Queries';
 import { DELETE_EVENT_MUTATION } from 'modules/Event/graphql/Mutations';
 import './EventCard.css';
 
-const EventCard = ({ eventId, userId, name, description }) => {
+const EventCard = ({ eventId, userId, name = '-', description = '-' }) => {
   const [deleteEvent] = useMutation(DELETE_EVENT_MUTATION, {
     refetchQueries: [
       {

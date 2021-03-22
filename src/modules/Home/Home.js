@@ -11,10 +11,12 @@ const Home = () => {
   const { loading, error, data = {} } = useQuery(GET_ALL_EVENTS, {
     fetchPolicy: 'cache-and-network',
   });
+
+  if (error) return <h1>Error : Please Turn On Internet </h1>;
+
   return (
     <CustomeLayout current='home'>
       <div id='bgHeight'>
-        {error && <h1>Error : Please Turn On Internet </h1>}
         {loading ? (
           <h1>Loading...</h1>
         ) : (
